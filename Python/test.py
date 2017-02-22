@@ -37,3 +37,12 @@ remove(root, 1)				#Still needs to be fixed. Ugh
 
 print 'reprint of levels'
 print_levels(root)
+
+print 'valid?'
+print valid(root)
+
+test = TreeNode(5)
+test.right = TreeNode(3)
+print valid(test)
+print test.val, test.right.val
+print 'end of test'

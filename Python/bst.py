@@ -9,18 +9,16 @@ root.right.val >=  root.val
 from TreeNode import *
 
 # Make sure that BST rules are held
+# Returns bool
 def valid(root):
 	if not root:
 		return
-	elif root.left and root.right and root.left.val
-	elif root.left and root.val > root.left.val:
-		return valid(root.left)
-		return valid(root.right)
-	elif root.right and root.val < root.right.val:
-		return valid(root.left)
-		return valid(root.right)
-	else:
+	elif (root.left and root.left.val > root.val) or (root.right and root.right.val < root.val):
 		return False
+	else:
+		valid(root.left)
+		valid(root.right)
+		return True
 
 # Takes a root TreeNode and inserts into the tree
 def insert(root, val):
