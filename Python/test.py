@@ -32,8 +32,8 @@ print find(root,11)
 print 'print_levels'
 print_levels(root)
 
-print 'removing'
-remove(root, 3)				#Still needs to be fixed. Ugh
+print 'removing 1'
+remove(root, 1)				#Still needs to be fixed. Ugh
 
 print 'reprint of levels'
 print_levels(root)

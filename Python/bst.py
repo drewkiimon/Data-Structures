@@ -8,6 +8,20 @@ root.right.val >=  root.val
 
 from TreeNode import *
 
+# Make sure that BST rules are held
+def valid(root):
+	if not root:
+		return
+	elif root.left and root.right and root.left.val
+	elif root.left and root.val > root.left.val:
+		return valid(root.left)
+		return valid(root.right)
+	elif root.right and root.val < root.right.val:
+		return valid(root.left)
+		return valid(root.right)
+	else:
+		return False
+
 # Takes a root TreeNode and inserts into the tree
 def insert(root, val):
 	if val < root.val and root.left == None:
@@ -19,26 +33,76 @@ def insert(root, val):
 	elif val >= root.val and root.right != None:
 		return insert(root.right, val)
 
-# Look through the tree to find the value to remove
-# Once we find the value, replace it with the largest
-# value in the left subtree
 def remove(root, val):
-	if not root:
-		print 'Value not in BST'
-		return
-	elif val == root.val:		# Now we replace it
-		root.val = largest(root.left)
-	elif val < root.val:
-		return remove(root.left, val)
+	# Found val to delete
+	if root and (root.val == val or root.left.val == val or root.right.val == val):
+		# Left node is val, and has no children
+		if root.left.val == val and not root.left.left and not root.left.right:
+			root.left = None
+			return
+		# Right node is val, and has no children
+		elif root.right.val == val and not root.right.left and not root.right.right:
+			root.right = None
+			return
+		# Left node is val, and has one child (left)
+		elif root.left.val == val and root.left.left and not root.left.right:	
+			root.left = root.left.left
+			return
+		# Left node is val, and has one child (right)
+		elif root.left.val == val and root.left.right and not root.left.left:
+			root.left = root.left.right
+			return
+		# Right node is val, and has one child (left)
+		elif root.right.val == val and root.right.left and not root.right.right:
+			root.right = root.right.left
+			return
+		# Right node is val, and has one child (right)
+		elif root.right.val == val and root.right.right and not root.right.left:
+			root.right = root.right.right
+			return
+		# Right node is val and has two children
+		elif root.right.val == val:
+			# Minimum val in right subtree
+			small = smallest(root.right.right)
+			# Repalce val of the node with found minimum
+			root.right.val = small
+			# Remove that duplicate
+			remove(root.right, small)
+		# Left node is val and has two children
+		elif root.left.val == val:
+			small = smallest(root.left.right)
+			root.left.val = small
+			remove(root.left, small)
+		# root.val == val and has two children
+		else:
+			small = smallest(root.right)
+			root.val = small
+			remove(root.right, small)
+	# Keep looking
 	else:
-		return remove(root.right, val)
+		if not root:
+			return
+		if val < root.val:
+			return remove(root.left, val)
+		else:
+			return remove(root.right, val)
+
+# Returns the smallest number in the tree
+def smallest(root):
+	if not root.left and not root.right:
+		return root.val
+	# Smaller value to the left
+	elif root.left:
+		return smallest(root.left)
+	# No val to left, but right val for sure to be bigger
+	elif not root.left and root.right:
+		return root.val
 
 # Return the largest in the tree
 # Helper function for remove
 def largest(root):
 	if not root.right and not root.left:
 		ret = root.val
-		del(root)
 		return ret
 	if root.right:
 		return largest(root.right)
@@ -77,7 +141,6 @@ def leaves(root):
 		return
 	leaves(root.left)
 	leaves(root.right)
-
 
 # Will print all values of the tree starting from the
 # small number to the highest number
