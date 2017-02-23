@@ -12,10 +12,15 @@ from Node import *
 # Inserting value into linked list
 # Insertion happens at the tail
 def tail_insert(head, val):
-	if head.next == None:
-		head.next = Node(val)
-	else:
-		return tail_insert(head.next, val)
+	ret = head
+	while head:
+		if head.next == None:
+			head.next = Node(val)
+			return ret
+		head = head.next
+
+# Inserting value into linked list
+# Insertion happens at the head
 def head_insert(head, val):
 	ret = Node(val)
 	ret.next = head
@@ -35,6 +40,13 @@ def remove(head, val):
 		else:
 			head = head.next
 	return ret
+
+# Reverse linked list
+def reverse(head):
+	if not head:
+		return
+	reverse(head.next)
+	print head.val
 
 # Returns a created Linked List from a list of values
 def make(l):

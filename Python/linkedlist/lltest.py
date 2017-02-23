@@ -20,8 +20,11 @@ head = remove(head,6)
 print_list(head)
 print '________________'
 print 'Insert 4 into tail'
-tail_insert(head,4)
+head = tail_insert(head,4)
 print_list(head)
 print 'Insert 7 into head'
 head = head_insert(head,7)
 print_list(head)
+print '________________'
+print 'Reverse'
+reverse(head)
