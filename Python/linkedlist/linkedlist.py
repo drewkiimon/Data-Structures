@@ -9,6 +9,16 @@ Rule of thumb (note for myself)
 '''
 from Node import *
 
+# Finds the val and returns the location in the Linked List
+def find(head, val):
+	while head:
+		if head.val == val:
+			return head
+		else:
+			head = head.next
+	print "Not in here dog"
+	return False
+
 # Inserting value into linked list
 # Insertion happens at the tail
 def tail_insert(head, val):
@@ -52,6 +62,11 @@ def reverse(head):
 		cur = next			# We have a new current
 	return prev
 
+# Reversing specific section of linked list
+# Head, start value, end value
+def s_reverse(head, start, end):
+	print "special reverse"
+
 # Returns a created Linked List from a list of values
 def make(l):
 	head = Node(l[0])				# This head is for iterating through
@@ -61,7 +76,7 @@ def make(l):
 		head = head.next
 	return ret_head
 	
-
+# Prints a visual of the list
 def print_list(head):
 	ret = []
 	while head:
