@@ -43,10 +43,14 @@ def remove(head, val):
 
 # Reverse linked list
 def reverse(head):
-	if not head:
-		return
-	reverse(head.next)
-	print head.val
+	prev = None
+	cur = head
+	while cur:
+		next = cur.next		# Gets "rid" of head of head
+		cur.next = prev		# Current val's next is prev
+		prev = cur
+		cur = next			# We have a new current
+	return prev
 
 # Returns a created Linked List from a list of values
 def make(l):
@@ -55,11 +59,13 @@ def make(l):
 	for value in xrange(1,len(l)):
 		head.next = Node(l[value])
 		head = head.next
-		print head.val
 	return ret_head
 	
 
 def print_list(head):
+	ret = []
 	while head:
-		print head.val
+		ret.append(str(head.val))
 		head = head.next
+	ret.append("None")
+	print '->'.join(ret)

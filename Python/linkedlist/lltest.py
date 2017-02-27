@@ -27,4 +27,5 @@ head = head_insert(head,7)
 print_list(head)
 print '________________'
 print 'Reverse'
-reverse(head)
+head = reverse(head)
+print_list(head)
