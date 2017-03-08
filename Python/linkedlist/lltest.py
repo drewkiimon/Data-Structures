@@ -31,5 +31,7 @@ head = reverse(head)
 print_list(head)
 print '________________'
 print 'Find'
-start = find(head,2).val
-end = find(head,3).val
+print find(head,6)
+print  find(head,3)
+print '________________'
+print 'Print list backwards'

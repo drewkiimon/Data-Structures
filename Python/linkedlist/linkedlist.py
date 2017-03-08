@@ -9,14 +9,14 @@ Rule of thumb (note for myself)
 '''
 from Node import *
 
-# Finds the val and returns the location in the Linked List
+# Finds the val and returns True if in the list
+# Returns false otherwise
 def find(head, val):
 	while head:
 		if head.val == val:
-			return head
+			return True
 		else:
 			head = head.next
-	print "Not in here dog"
 	return False
 
 # Inserting value into linked list
