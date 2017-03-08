@@ -10,3 +10,5 @@ x.pop()
 x.view()
 x.dump()
 x.view()
+
+print "End of test"
