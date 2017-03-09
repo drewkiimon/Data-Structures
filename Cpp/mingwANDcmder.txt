@@ -1,0 +1,5 @@
+Just a quick little reminder what I did to be able to compile C++ code via Cmder
+
+Download MinGW for GNU Compiler
+
+In Cmder --> @set PATH=/c/MinGW/bin/;%PATH%
