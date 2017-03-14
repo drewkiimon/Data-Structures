@@ -1,4 +1,4 @@
-# Data-Structures
+# data-structures
 Independently created data structures such as BST, linked list, stack, queue, etc.
 
 My goal of this repository is not only to grasp a better understanding of data structures that 
